@@ -26,6 +26,8 @@ def post_fix(expre):
         # if it is an operand, append to stack
         if num.isdigit():
             stack.append(num)
+
+        # if it is an operator, pop and evaluate
         else:
             # returns None if it detects an error, usually if the expression is not valid
             try:
