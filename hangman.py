@@ -12,13 +12,15 @@ def guess_the_word(word):
 
 def get_random_word():
     random_word = random.choice(words)
+    # if the word contains '-' or two words is received, keep looking for 1 single word
     while '-' in random_word or ' ' in random_word:
         random_word = random.choice(words)
+    # then return the single word as the word to be guessed
     return random_word.upper()
 
 def play():
     the_word = get_random_word()
-    used_letters = set() # user guess
+    used_letters = set() # user guess without repetition
     words_letter = set(the_word) # letters in the words to be guessed without repetition
     alphabet = set(string.ascii_uppercase)
     lives = 6
@@ -54,7 +56,7 @@ def play():
             else:
                 lives -= 1
 
-        # if the user already guessed the letter, just print something and do nothing
+        # if the user already used same letter, just print something and do nothing
         elif inp_letter in used_letters:
             print('You already used this letter: \n')
 
